@@ -8,6 +8,7 @@
                          hello.checkout_git()
                 }
               }
+            }  
             stage ('checkout code from git'){
                 steps{
                     script
