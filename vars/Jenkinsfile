@@ -6,7 +6,7 @@
             stage ('checkout code from git'){
                 steps{
                     script
-                    {
+                     {
                          checkout_git.checkout_git()    
                     }
                 }
