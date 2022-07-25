@@ -1,13 +1,14 @@
 @Library('Mylibrary') _
  pipeline {
       agent any
-           stages {
+        stages  {
               stage('hello world'){
                 steps{
-                    script{
+                    script
+                    {
                          hello.checkout_git()
-                }
-              }
+                   }
+                }  
             }  
             stage ('checkout code from git'){
                 steps{
