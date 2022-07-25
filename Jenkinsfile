@@ -1,18 +1,8 @@
 @Library('Mylibrary') _
  pipeline {
       agent any
-      tools {
-         maven "maven"
-      }
-        stages  {
-              stage('hello world'){
-                steps{
-                    script
-                    {
-                         hello.checkout_git()
-                   }
-                }  
-            }  
+        stages 
+            {
             stage ('checkout code from git'){
                 steps{
                     script
