@@ -2,9 +2,9 @@
  pipeline {
       agent any
         stages {
-              stage('hello world'){
+              stage('jb-hello-world-maven'){
                 steps{
-                    hello.hello()
+                    hello.checkout_git()
                 }
               }
             stage ('checkout code from git'){
