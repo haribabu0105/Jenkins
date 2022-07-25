@@ -2,7 +2,6 @@
  pipeline {
       agent any
         stages {
-
             stage('call hello')
               steps{
                 script{
