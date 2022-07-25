@@ -2,12 +2,13 @@
  pipeline {
       agent any
         stages {
-            stage('call hello')
+            stage('call hello'){
               steps{
                 script{
                     hello.hello()
                 }
               }
+            }
 
             stage ('checkout code from git'){
                 steps{
