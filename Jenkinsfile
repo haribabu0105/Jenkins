@@ -2,7 +2,7 @@
  pipeline {
       agent any
         stages {
-              stage('checkkout code from git'){
+              stage('checkout code from git'){
                 steps{
                     hello.checkout_git()
                 }
