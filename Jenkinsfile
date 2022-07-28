@@ -5,19 +5,20 @@
             {  
             stage ('checkout code from git'){
                 steps{
-                    script
-                     {
-                         checkout_git.checkout_git()    
-                    }
+                     
+                     parallel (
+                 "1": {dir ("sparkjava-war-example") {script {checkout_git.checkout_git("sparkjava-war-example","master") } } },  
+                  "2": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven","master")}}}
+                     )
                 }
             }
 
             stage('triggering awscodebuild') {
                 steps {
-                    script
-                   {
-                      awscodebuild.awscodebuild() 
-                    }
+                     parallel (
+                 "1": {dir ("sparkjava-war-example") {script {awsCodeBuild.awsCodeBuild("jenkins3") } } },  
+                  "2": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("jenkins2")}}}
+                     ) 
                }
             }
         }
