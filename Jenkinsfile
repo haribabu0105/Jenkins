@@ -16,7 +16,7 @@
             stage('triggering awscodebuild') {
                 steps {
                      parallel (
-                 "1": {dir ("sparkjava-war-example") {script {awsCodeBuild.awsCodeBuild("jenkins3") } } },  
+                 "1": {dir ("sparkjava-war-example") {script {awscodebuild.awscodebuild("jenkins3") } } },  
                   "2": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("jenkins2")}}}
                      ) 
                }
