@@ -1,5 +1,4 @@
-def checkout_git() {
-    echo ('jb-hello-world-maven')
-       git credentialsId: 'hari', url: 'git@github.com:haribabu0105/java-hello-world-with-maven.git'
-    {
+def hello() {
+    echo 'jb-hello-world-maven'
+}
    return this

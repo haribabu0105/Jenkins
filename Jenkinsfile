@@ -3,6 +3,14 @@
       agent any
         stages 
             {
+              stage('Hello World') {
+                steps {
+                  script 
+                {
+                    hello.hello()
+                }
+            }
+        }   
             stage ('checkout code from git'){
                 steps{
                     script
