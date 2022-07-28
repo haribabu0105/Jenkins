@@ -1,25 +1,27 @@
 @Library('Mylibrary') _
  pipeline {
       agent any
-        stages 
-            {  
+        stages {
+
             stage ('checkout code from git'){
                 steps{
-                     
-                     parallel (
-                 "1": {dir ("sparkjava-war-example") {script {checkout_git.checkout_git("sparkjava-war-example","master") } } },  
-                  "2": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven","master")}}}
-                     )
+                       script {checkout_git.checkout_git("sparkjava-war-example", "master")}   
+                    }
                 }
-            }
 
             stage('triggering awscodebuild') {
                 steps {
-                     parallel (
-                 "1": {dir ("sparkjava-war-example") {script {awscodebuild.awscodebuild("jenkins3") } } },  
-                  "2": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("jenkins2")}}}
-                     ) 
+                      script {awscodebuild.awscodebuild("jenkins3")} 
+                    }
                }
+            stage('deploy java to tomcat') {
+            steps {
+                 script {deploy_tomcat.deploy_tomcat()}
+                
             }
-        }
-    }
+        }       
+
+
+            }
+        
+ }
