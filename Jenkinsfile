@@ -7,7 +7,7 @@
                 steps {
                   script 
                 {
-                    hello.hello()
+                    hello.checkout_git()
                 }
             }
         }   
