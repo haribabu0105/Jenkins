@@ -2,15 +2,7 @@
  pipeline {
       agent any
         stages 
-            {
-              stage('Hello World') {
-                steps {
-                  script 
-                {
-                    hello.checkout_git()
-                }
-            }
-        }   
+            {  
             stage ('checkout code from git'){
                 steps{
                     script
