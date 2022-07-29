@@ -4,7 +4,8 @@
         stages {
 
             stage ('checkout code from git'){
-                steps{
+                steps
+                {
                        script {checkout_git.checkout_git("sparkjava-war-example", "master")}   
                     }
                 }
@@ -19,6 +20,7 @@
                  script {deploy_tomcat.deploy_tomcat("deploy_java.sh")}
                 
             }
+        
         }       
      }       
         
