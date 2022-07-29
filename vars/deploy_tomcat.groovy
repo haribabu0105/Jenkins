@@ -1,9 +1,11 @@
 def deploy_tomcat() {
     
     echo "deploying to tomcat server."
-   sh """
+   sh '''
       cd ${WORKSPACE}/shellscripts
       sh ./deploy_java.sh
-      """   
+      '''      
+
 }
-return this 
+
+return this
