@@ -5,23 +5,31 @@
 
             stage ('checkout code from git'){
                 steps
-                {
-                       script {checkout_git.checkout_git("sparkjava-war-example", "master")}   
-                    }
+             {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example", "master")}} } 
+                    
                 }
 
-            stage('triggering awscodebuild') {
-                steps {
-                      script {awscodebuild.awscodebuild("jenkins3")} 
-                    }
-               }
-            stage('deploy java to tomcat') {
-            steps {
-                 script {deploy_tomcat.deploy_tomcat()}
-                
+               stage('create tag on git repo') {
+            steps {                                
+                 dir("sparkjava-war-example") {                        
+                script {create_tag.create_tag("${tag}")}                
+                 }
             }
-        
-        }       
+        }  
+
+            stage('triggering awscodebuild') {
+                steps 
+                     {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("jenkins3", "${tag}")} } }
+                }
+
+            stage('deploy java to tomcat') {
+            steps 
+                {
+                    sh "echo env is ${ENVIRONMENT} "
+                    script {deploy_tomcat.deploy_tomcat("${tag}", "${ENVIRONMENT}")}
+                    }
+            }   
+                    
      }       
         
  }
