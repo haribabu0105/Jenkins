@@ -1,4 +1,5 @@
 #!/bin/bash
+
  mkdir /var/lib/jenkins/deploy
 cd /var/lib/jenkins/deploy
 aws s3 cp s3://jenkinsbucket12345/java3/sparkjava-hello-world-1.0.war .
