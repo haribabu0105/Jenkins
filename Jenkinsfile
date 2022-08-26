@@ -26,7 +26,7 @@
                     sh "echo env is ${ENVIRONMENT} "
                     script {deploy_tomcat.deploy_tomcat("${tag}", "${ENVIRONMENT}")}
                   }
-                                               }   
+                          }   
                     
            }                 
         
