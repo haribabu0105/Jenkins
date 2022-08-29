@@ -5,7 +5,7 @@
 
             stage ('checkout code from git'){
                 steps{
-                      dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example", "master")}}
+                      dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example", "release-branch")}}
                      } 
                                             }
 
